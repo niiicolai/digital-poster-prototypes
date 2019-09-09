@@ -37,7 +37,8 @@ You should now have downloaded a directory called `digital-poster-prototypes` an
 3. Use `git push origin <branch-name>` to push the changes to Github
 4. Go to [the current repository](https://github.com/niiicolai/digital-poster-prototypes) and click on `compare & pull request` in the top
 5. Assign the pull request to another member for review or click `Merge pull request` to merge instantly
-- [Example of a pull request](https://github.com/niiicolai/digital-poster-prototypes/pull/1)
+
+[Example of a pull request](https://github.com/niiicolai/digital-poster-prototypes/pull/1)
 
 ## Bash commands: 
 - `ls` to list files and folders in the current directory 

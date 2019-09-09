@@ -8,15 +8,9 @@
 You can skip this step if you already have git installed.
 
 #### Windows: 
-Download and use the installer wizard to complete the installation.
-
 [Git for windows](https://gitforwindows.org/)
 
 #### MacOS: 
-Built-in terminal or a third party
-
-Follow the link for information about installing git using homebrew.
-
 [Installing git on a mac](https://gist.github.com/derhuerst/1b15ff4652a867391f03#installing-git-on-a-mac)
 
 #### Both:

@@ -7,15 +7,8 @@
 ##### Setup git
 You can skip this step if you already have git installed.
 
-#### Windows: 
-[Git for windows](https://gitforwindows.org/)
-
-#### MacOS: 
-[Installing git on a mac](https://gist.github.com/derhuerst/1b15ff4652a867391f03#installing-git-on-a-mac)
-
-#### Both:
-[Github desktop application](https://desktop.github.com/)
-
+#### Windows: [Git for windows](https://gitforwindows.org/)
+#### MacOS: [Installing git on a mac](https://gist.github.com/derhuerst/1b15ff4652a867391f03#installing-git-on-a-mac)
 
 ### Step 2:
 

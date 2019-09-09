@@ -33,7 +33,7 @@ Follow the link for information about installing git using homebrew.
 
 You should now have downloaded a directory called `digital-poster-prototypes` and be ready to work in this repository.
 
-### How to:
+## How to:
 
 ##### Develop on your local machine
 
@@ -52,12 +52,12 @@ You should now have downloaded a directory called `digital-poster-prototypes` an
 5. Assign the pull request to another member for review or click `Merge pull request` to merge instantly
 - [Example of pull request](https://github.com/niiicolai/digital-poster-prototypes/pull/1)
 
-### Bash commands: 
+## Bash commands: 
 - `ls` to list files and folders in the current directory 
 - `mkdir <foldername>` to create a directory
 - `cd <foldername>` to enter a directory
 
-### Useful links:
+## Useful links:
 - [Adding a new ssh key to your github account](https://help.github.com/en/articles/adding-a-new-ssh-key-to-your-github-account)
 - [Basic branching and merging](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 - [Git push](https://www.atlassian.com/git/tutorials/syncing/git-push)

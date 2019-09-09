@@ -5,6 +5,7 @@
 ### Step 1: 
 
 Ensure to have a git tool installed before continuing.
+If not, chose one of the options below.
 
 #### Windows: 
 https://gitforwindows.org/
@@ -17,8 +18,12 @@ Built-in terminal or a third party
 Follow the link for information about installing git using homebrew.
 https://gist.github.com/derhuerst/1b15ff4652a867391f03#installing-git-on-a-mac
 
+#### Both:
+Github desktop:
+https://desktop.github.com/
+
 ### Step 2:
 
 1. Open your terminal
 2. Find a location you want to save the repository etc. create a new folder (mkdir <foldername>, cd <foldername>) 
-3. Now enter 'git clone git@github.com:niiicolai/digital-poster-prototypes.git' to download the repository
+3. Now enter `git clone git@github.com:niiicolai/digital-poster-prototypes.git` to download the repository

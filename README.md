@@ -37,7 +37,7 @@ You should now have downloaded a directory called `digital-poster-prototypes` an
 
 ##### Git branching in short
 
-- When you enter the directory `digital-poster-prototypes` first time, you will be on the master branch.
+- When you enter the directory `digital-poster-prototypes` for the first time, you will be on the master branch.
 - The master branch is the main branch. This branch should be kept clean from experimental code and unready bug fixes.
 - You will therefore need to create a new local branch where you do your modifications.
 - To create a new branch: Enter `git checkout -b <branch-name>` in your terminal

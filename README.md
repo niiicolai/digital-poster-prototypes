@@ -48,9 +48,9 @@ You should now have downloaded a directory called `digital-poster-prototypes` an
 1. Ensure you are on the correct branch. Use either `git branch` or `git status` to confirm.
 2. Use `git add path/file` for a singular file or `git add .` to add all files to a commit
 3. Use `git push origin <branch-name>` to push the changes to Github
-4. Go to (the current repository)[https://github.com/niiicolai/digital-poster-prototypes] and click on `compare & pull request` in the top
+4. Go to [the current repository](https://github.com/niiicolai/digital-poster-prototypes) and click on `compare & pull request` in the top
 5. Assign the pull request to another member for review or click `Merge pull request` to merge instantly
-- (Example of pull request)[https://github.com/niiicolai/digital-poster-prototypes/pull/1]
+- [Example of pull request](https://github.com/niiicolai/digital-poster-prototypes/pull/1)
 
 ### Bash commands: 
 - `ls` to list files and folders in the current directory 

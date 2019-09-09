@@ -1,1 +1,0 @@
-## Digital poster prototypes

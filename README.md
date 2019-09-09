@@ -35,13 +35,22 @@ You should now have downloaded a directory called `digital-poster-prototypes` an
 
 ### How to:
 
-##### Git branching in short
+##### Develop on your local machine
 
 - When you enter the directory `digital-poster-prototypes` for the first time, you will be on the master branch.
 - The master branch is the main branch. This branch should be kept clean from experimental code and unready bug fixes.
 - You will therefore need to create a new local branch where you do your modifications.
 - To create a new branch: Enter `git checkout -b <branch-name>` in your terminal
 - Use `git checkout <branch-name>` without the -b option to switch between branches
+
+##### Push and merge a local branch to master
+
+1. Ensure you are on the correct branch. Use either `git branch` or `git status` to confirm.
+2. Use `git add path/file` for a singular file or `git add .` to add all files to a commit
+3. Use `git push origin <branch-name>` to push the changes to Github
+4. Go to (the current repository)[https://github.com/niiicolai/digital-poster-prototypes] and click on `compare & pull request` in the top
+5. Assign the pull request to another member for review or click `Merge pull request` to merge instantly
+- (Example of pull request)[https://github.com/niiicolai/digital-poster-prototypes/pull/1]
 
 ### Bash commands: 
 - `ls` to list files and folders in the current directory 

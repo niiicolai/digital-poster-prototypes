@@ -40,6 +40,12 @@ You should now have downloaded a directory called `digital-poster-prototypes` an
 
 [Example of a pull request](https://github.com/niiicolai/digital-poster-prototypes/pull/1)
 
+##### Where do I put my sketch folder to add a new prototype?
+1. Ensure the directory name doesn't conflict with another directory name inside `digital-poster-prototypes/prototypes`
+2. Ensure you checkout to another git branch (than master) before doing any modifications
+3. Move your sketch folder under `digital-poster-prototypes/prototypes`
+4. Follow the guidelines for 'Push and merge a local branch to master' if the prototype is done.
+
 ## Bash commands: 
 - `ls` to list files and folders in the current directory 
 - `mkdir <foldername>` to create a directory

@@ -15,7 +15,7 @@ You can skip this step if you already have git installed.
 ##### Download the repository to your local computer
 
 1. Open your terminal
-2. Find a location you want to save the repository (check 'Bash commands' for help)
+2. Find a location you want to save the repository (check '[Bash commands](https://github.com/niiicolai/digital-poster-prototypes#bash-commands)' for help)
 3. Enter `git clone git@github.com:niiicolai/digital-poster-prototypes.git` to download the repository
 
 You should now have downloaded a directory called `digital-poster-prototypes` and be ready to work in this repository.

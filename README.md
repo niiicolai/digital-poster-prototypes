@@ -12,6 +12,13 @@ You can skip this step if you already have git installed.
 
 ### Step 2:
 
+##### Add a SSH key to Github
+1. Check if you already have generated a SSH key [Checking for existing SSH keys](https://help.github.com/en/enterprise/2.15/user/articles/checking-for-existing-ssh-keys)
+2. If you had a SSH key skip this step or follow the guidelines in [Generating a new SSH key](https://help.github.com/en/enterprise/2.15/user/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+3. Add the SSH key to your Github account [Adding a new SSH key to your GitHub account](https://help.github.com/en/enterprise/2.15/user/articles/adding-a-new-ssh-key-to-your-github-account)
+
+### Step 3:
+
 ##### Download the repository to your local computer
 
 1. Open your terminal

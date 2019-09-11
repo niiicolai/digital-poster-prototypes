@@ -9,6 +9,9 @@ You can skip this step if you already have git installed.
 
 #### Windows: [Git for windows](https://gitforwindows.org/)
 #### MacOS: [Installing git on a mac](https://gist.github.com/derhuerst/1b15ff4652a867391f03#installing-git-on-a-mac)
+#### Both:
+- [Visual studio Github](https://visualstudio.github.com/)
+- [Github desktop](https://desktop.github.com/)
 
 ### Step 2:
 

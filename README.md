@@ -59,6 +59,6 @@ You should now have downloaded a directory called `digital-poster-prototypes` an
 - `cd <foldername>` to enter a directory
 
 ## Useful links:
-- [Adding a new ssh key to your github account](https://help.github.com/en/articles/adding-a-new-ssh-key-to-your-github-account)
+- [Why git?](https://www.atlassian.com/git/tutorials/why-git)
 - [Basic branching and merging](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 - [Git push](https://www.atlassian.com/git/tutorials/syncing/git-push)

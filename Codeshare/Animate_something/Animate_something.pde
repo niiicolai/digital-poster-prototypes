@@ -14,12 +14,6 @@ void setup() {
   boat.size = new PVector(190, 40);
   boat.bottomRectVertexScale = new PVector(20, -20);
   
-  boat.middleRectPosition = new PVector(30, 30);
-  boat.middleRectSize = new PVector(130, 30);
-  
-  boat.topRectPosition = new PVector(50, 60);
-  boat.topRectSize = new PVector(90, 30);
-  
   boat.chimneyRectSizes = new PVector[] {
     new PVector(20, 60),
     new PVector(20, 25)
@@ -49,17 +43,6 @@ class Boat {
   
   // Scales the position of the bottom-left and bottom-right vertex 
   public PVector bottomRectVertexScale;
-  
-  // The length and heigth of the 'middle rect'
-  public PVector middleRectSize;
-  // The boat's 'middle rect' position relative to 'bottom rect'
-  public PVector middleRectPosition;
-  
-  // The length and height of the 'top rect'
-  public PVector topRectSize;
-  
-  // The boat's 'top rect' position relative to 'bottom rect'
-  public PVector topRectPosition;
   
   // The length and height of the boat's chimneys
   public PVector[] chimneyRectSizes;
@@ -99,7 +82,7 @@ class Boat {
       position.x += speed;
       
       if (position.x > width+size.x) {
-        position.x -= width-size.x; 
+        position.x = -size.x; 
       }
     }
   }

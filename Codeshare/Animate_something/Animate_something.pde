@@ -34,8 +34,6 @@ void setup() {
 void draw() {
   // Draw the processing window's background color 
   background(backgroundColor);
-  fill(backgroundColor);
-  stroke(backgroundColor);
   
   // Execute the boat's 'render' function
   boat.render();

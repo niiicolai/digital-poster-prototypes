@@ -25,7 +25,7 @@ int lastIdleReset;
 // Run only once
 void setup() {
   // Set size
-  size(500, 500);
+  size(595, 842);
   
   // Set start page as default page
   defaultPage = startPage.label;

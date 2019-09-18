@@ -69,12 +69,16 @@ Your branch is up to date with 'origin/master'
 if everything is up to date on the master branch.
 
 2. If your master branch was `up to date`, skip to step 3
+
 If your local master branch was behind the remote, enter `git pull origin master`
+
 to get the latest version of the master branch.
 
 3. Create a new branch to work on the digital poster
+
 Enter `git checkout -b some-branch-name` to create a new branch. (Try to find a name related to the task)
-4. Open one of the `processing source code` files inside the `\Digital-poster\digtalPoster`
+
+4. Open one of the `processing source code` files inside the `\Digital-poster\digtalPoster` directory
 5. Modify the code a way that fits the current task
 6. [Push and merge a local branch to master](https://github.com/niiicolai/digital-poster-prototypes#push-and-merge-a-local-branch-to-master)
 

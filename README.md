@@ -60,6 +60,7 @@ You should now have downloaded a directory called `digital-poster-prototypes` an
 1. Ensure you have the latest version of the master branch
 
 Open your terminal and `git checkout master` to move to the master branch and enter `git status`,
+
 You should see the message:
 ```
 On branch master

@@ -56,6 +56,27 @@ You should now have downloaded a directory called `digital-poster-prototypes` an
 3. Move your sketch folder under `digital-poster-prototypes/prototypes`
 4. Follow the guidelines for `Push and merge a local branch to master` if the prototype is done.
 
+##### Work on the production version of the digital poster
+1. Ensure you have the latest version of the master branch
+
+Open your terminal and `git checkout master` to move to the master branch and enter `git status`,
+You should see the message:
+```
+On branch master
+Your branch is up to date with 'origin/master'
+```
+if everything is up to date on the master branch.
+
+2. If your master branch was `up to date`, skip to step 3
+If your local master branch was behind the remote, enter `git pull origin master`
+to get the latest version of the master branch.
+
+3. Create a new branch to work on the digital poster
+Enter `git checkout -b some-branch-name` to create a new branch. (Try to find a name related to the task)
+4. Open one of the `processing source code` files inside the `\Digital-poster\digtalPoster`
+5. Modify the code a way that fits the current task
+6. [Push and merge a local branch to master](https://github.com/niiicolai/digital-poster-prototypes#push-and-merge-a-local-branch-to-master)
+
 ## Bash commands: 
 - `ls` to list files and folders in the current directory 
 - `mkdir <foldername>` to create a directory

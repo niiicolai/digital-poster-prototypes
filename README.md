@@ -1,5 +1,8 @@
 ## Digital poster prototypes
 
+- Find rapport overview on [Trello](https://trello.com/b/kYEZlh3N/rapport)
+- Find issues that needs contribution at our [project list](https://github.com/niiicolai/digital-poster-prototypes/projects)
+
 ## Get started
 
 ### Step 1: 

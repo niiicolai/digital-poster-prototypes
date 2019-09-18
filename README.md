@@ -54,7 +54,7 @@ You should now have downloaded a directory called `digital-poster-prototypes` an
 1. Ensure the directory name doesn't conflict with another directory name inside `digital-poster-prototypes/prototypes`
 2. Ensure you checkout to another git branch (than master) before doing any modifications
 3. Move your sketch folder under `digital-poster-prototypes/prototypes`
-4. Follow the guidelines for `Push and merge a local branch to master` if the prototype is done.
+4. Follow the guidelines for [Push and merge a local branch to master](https://github.com/niiicolai/digital-poster-prototypes#push-and-merge-a-local-branch-to-master) if the prototype is done.
 
 ##### Work on the production version of the digital poster
 1. Ensure you have the latest version of the master branch

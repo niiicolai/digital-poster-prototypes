@@ -17,7 +17,7 @@ InfoPage infoPage = new InfoPage();
 // If an user haven't switch page
 // before the timer hits maxIdleTime,
 // automatically switch back to the start page
-int maxIdleTime = 300;
+int maxIdleTime = ((60000)*5);
 // keeps track of what the time is
 // everyTime we wants to reset
 int lastIdleReset;
@@ -31,6 +31,13 @@ void setup() {
   defaultPage = startPage.label;
   // set current page to the default page
   currentPage = defaultPage;
+  
+  // Initialize pages
+  startPage.init();
+  avsPage.init();
+  programmingPage.init();
+  graphicDesignPage.init();
+  infoPage.init();
 }
 
 // Run forever
@@ -62,9 +69,25 @@ void draw() {
   }    
 }
 
+// called after a mouse button has been pressed and then released
+void mouseClicked() {
+  // call local mouse click function
+  if (currentPage == startPage.label) {
+    startPage.OnMouseClicked();
+  } else if (currentPage == avsPage.label) {
+    avsPage.OnMouseClicked();
+  } else if (currentPage == programmingPage.label) {
+    programmingPage.OnMouseClicked();
+  } else if (currentPage == graphicDesignPage.label) {
+    graphicDesignPage.OnMouseClicked();
+  } else if (currentPage == infoPage.label) {
+    infoPage.OnMouseClicked();
+  }
+}
+
 // A function used to switch to a new page.
 // Takes a string which needs to match a page label
-void navigate(String label) {
+public void navigate(String nextPage) {
   // Hide the old page
   if (currentPage == startPage.label) {
     startPage.hide();
@@ -79,7 +102,7 @@ void navigate(String label) {
   }
   
   // Set current scene to the new page
-  currentPage = label;
+  currentPage = nextPage;
   
   // Reset the idle timer to ensure the user
   // don't get sent back to the frontpage

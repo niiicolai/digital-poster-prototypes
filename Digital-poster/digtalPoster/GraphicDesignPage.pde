@@ -1,6 +1,8 @@
 class GraphicDesignPage {
   // label used to navigate between pages
   public String label = "GRAPHICDESIGN";
+    PImage bgImage;
+
   
   // The background color for this page
   private color backgroundColor = color(67, 35, 216);
@@ -9,7 +11,8 @@ class GraphicDesignPage {
   // Use this function to setup variables
   // after setting processing display windows size() etc.
   public void init() {
-    
+        bgImage = loadImage("assets/Grafisk_Design.png");
+
   }
   
   // the global navigate(string) function
@@ -25,7 +28,8 @@ class GraphicDesignPage {
   public void display() {
     // Set the background color
     background(backgroundColor);
-    
+        image(bgImage, 0, 0,width,height);
+
     // demo line
     line(width/2, 0, width/2, height);
     // demo text

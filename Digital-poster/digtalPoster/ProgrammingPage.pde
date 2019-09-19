@@ -1,17 +1,18 @@
 class ProgrammingPage {
   // label used to navigate between pages
   public String label = "PROGRAMMING";
+  
+  // The page's background image
   PImage bgImage;
-
-
-  // The background color for this page
-  private color backgroundColor = color(164, 216, 35);
+  // The path to the background image
+  String backgroundImageUrl = "assets/images/Programmering2.png";
 
   // called inside setup()
   // Use this function to setup variables
   // after setting processing display windows size() etc.
   public void init() {
-    bgImage = loadImage("assets/Programmering2.png");
+    // Load the image from our assets folder
+    bgImage = loadImage(backgroundImageUrl);
   }
 
   // the global navigate(string) function
@@ -24,8 +25,7 @@ class ProgrammingPage {
   // variable match its label
   // Use this function to display page elements
   public void display() {
-    // Set the background color
-    background(backgroundColor);
+    // Draw the background image
     image(bgImage, 0, 0, width, height);
 
     // demo line

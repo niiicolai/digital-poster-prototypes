@@ -22,10 +22,20 @@ int maxIdleTime = ((60000)*5);
 // everyTime we wants to reset
 int lastIdleReset;
 
+// global textbox font
+PFont textboxFont;
+// path to text box font
+String textboxFontUrl = "assets/fonts/FredokaOne-Regular.ttf";
+// the default size of all text
+float defaultTextSize = 12;
+
 // Run only once
 void setup() {
   // Set size
   size(595, 842);
+  
+  // Load global text box font
+  textboxFont = createFont(textboxFontUrl, defaultTextSize);
   
   // Set start page as default page
   defaultPage = startPage.label;

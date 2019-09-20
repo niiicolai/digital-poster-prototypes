@@ -7,6 +7,9 @@ class AvsPage {
   // The path to the background image
   String backgroundImagePath = "assets/images/audioVisualSketching.png";
   
+  // The page's background color
+  color backgroundColor = color(203, 222, 223);
+  
   // The start page's character
   PImage characterImage;
   // The path to the character image
@@ -31,6 +34,15 @@ class AvsPage {
   PVector[] textboxSizes;  
   // The number of pixels the textbox should indent on x axis
   float textboxPaddingX = 40;
+  
+  SequentailFadeIn sequentialLine;
+  SequentailFadeIn sequentialRect;
+  SequentailFadeIn sequentialRect1;
+  SequentailFadeIn sequentialRect2;
+  color sequentialLineStrokeColor = color(255);
+  PVector sequentialVelocity = new PVector(10, 10);
+  PVector sequentialVelocity2 = new PVector(16, 16);
+  float strokeWeight = 3;
 
   // called inside setup()
   // Use this function to setup variables
@@ -67,6 +79,48 @@ class AvsPage {
       textboxes[i] = new Textbox(
           textboxPositions[i], textboxSizes[i], textMessages[i]);
     }
+    
+    PVector[] seqLinePositions = new PVector[]{
+      new PVector(0, height/2), 
+      new PVector(width, height/2)      
+    };
+    sequentialLine = new SequentailFadeIn(SEQUENTIALLINE, seqLinePositions, sequentialVelocity, sequentialLineStrokeColor, color(backgroundColor), strokeWeight);
+    
+    PVector[] seqRectPositions = new PVector[]{
+      // top left corner
+      new PVector(textboxPositions[0].x, textboxPositions[0].y), 
+      // bottom left corner
+      new PVector(textboxPositions[0].x, textboxPositions[0].y+textboxSizes[0].y),
+      // bottom right corner
+      new PVector(textboxPositions[0].x+textboxSizes[0].x, textboxPositions[0].y+textboxSizes[0].y),
+      // top right corner
+      new PVector(textboxPositions[0].x+textboxSizes[0].x, textboxPositions[0].y)
+    };
+    sequentialRect = new SequentailFadeIn(SEQUENTIALRECT, seqRectPositions, sequentialVelocity, sequentialLineStrokeColor, color(backgroundColor), strokeWeight);
+    
+    PVector[] seqRect1Positions = new PVector[]{
+      // top left corner
+      new PVector(textboxPositions[1].x, textboxPositions[1].y), 
+      // bottom left corner
+      new PVector(textboxPositions[1].x, textboxPositions[1].y+textboxSizes[1].y),
+      // bottom right corner
+      new PVector(textboxPositions[1].x+textboxSizes[1].x, textboxPositions[1].y+textboxSizes[1].y),
+      // top right corner
+      new PVector(textboxPositions[1].x+textboxSizes[1].x, textboxPositions[1].y)
+    };
+    sequentialRect1 = new SequentailFadeIn(SEQUENTIALRECT, seqRect1Positions, sequentialVelocity, sequentialLineStrokeColor, color(backgroundColor), strokeWeight);
+    
+    PVector[] seqRect2Positions = new PVector[]{
+      // top left corner
+      new PVector(textboxPositions[2].x, textboxPositions[2].y), 
+      // bottom left corner
+      new PVector(textboxPositions[2].x, textboxPositions[2].y+textboxSizes[2].y),
+      // bottom right corner
+      new PVector(textboxPositions[2].x+textboxSizes[2].x, textboxPositions[2].y+textboxSizes[2].y),
+      // top right corner
+      new PVector(textboxPositions[2].x+textboxSizes[2].x, textboxPositions[2].y)
+    };
+    sequentialRect2 = new SequentailFadeIn(SEQUENTIALRECT, seqRect2Positions, sequentialVelocity2, sequentialLineStrokeColor, color(backgroundColor), strokeWeight);
   }
 
   // the global navigate(string) function
@@ -79,6 +133,16 @@ class AvsPage {
   // variable match its label
   // Use this function to display page elements
   public void display() {
+    background(backgroundColor);
+    if (!sequentialRect.finished && !sequentialRect1.finished && !sequentialRect2.finished) {
+      
+      //sequentialLine.display();      
+      sequentialRect.display();
+      sequentialRect1.display();
+      sequentialRect2.display();
+      return;
+    }
+    
     // Draw the background image
     image(bgImage, 0, 0, width, height);
 

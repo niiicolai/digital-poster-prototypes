@@ -8,11 +8,31 @@ class InfoPage {
   String backgroundImageUrl = "assets/images/Info.jpg";
   
   // The footer rect's fill color 
-  public color footerRectFillColor = color(33, 26, 82);
+  color footerRectFillColor = color(33, 26, 82);
   // The footer rect's stroke color
-  public color footerRectStrokeColor = color(33, 26, 82);
+  color footerRectStrokeColor = color(33, 26, 82);
   // footer height divider
-  public float footerRectHeightDivider = 1.5;
+  float footerRectHeightDivider = 1.5;
+  
+  // Footer title text
+  String footerTitle = "Medialogi";
+  // Footer title padding on the y axis
+  float footerTitleYPadding = 55;
+  // Footer title text size
+  float footerTitleTextSize = 50;
+  
+  // Footer message text
+  String footerMessage = "Hvis du vil læse mere gå da ind på aau.dk og find Medialogy eller gå direkte ind på\nhttps://www.aau.dk/uddannelser/bachelor/medialogi.\nDu kan læse medialogy i både København og Aalborg.\nHusk at ansøg senest d. 5. juli kl. 12:00\nDu kan møde os til åbent hus d. 6 februar 13:00 til 17:00!\nFredrik Bajers Vej 7K\nPostboks 159 9100 Aalborg\nTelefon: 9940 9940\nMail: aau@aau.dk\n\n(facebook logo): https://www.facebook.com/AalborgUniversitet/\n(ig logo): https://www.instagram.com/aaustudieliv/\n(Snapchat logo): aauuni";
+  // Footer message padding y the y axis
+  float footerMessageYPadding = 90;
+  // footer message text size;
+  float footerMessageTextSize = 10;
+  
+  // Footer text alignment
+  public int footerTextAlignment = CENTER;
+  // Footer text color
+  color footerTextColor = 255;
+  
   
   // called inside setup()
   // Use this function to setup variables
@@ -45,14 +65,23 @@ class InfoPage {
     // Draw footer rect
     rect(0, height/footerRectHeightDivider, width, height);
     
-    textAlign(CENTER);
+    // Set text alignment
+    textAlign(footerTextAlignment);
     
-    fill(255);
-    textSize(50);
-    text("Medialogi", width/2, height/footerRectHeightDivider+80);
+    // Set text color
+    fill(footerTextColor);
     
-    textSize(10);    
-    text("Hvis du vil læse mere gå da ind på aau.dk og find Medialogy eller gå direkte ind på\nhttps://www.aau.dk/uddannelser/bachelor/medialogi.\nDu kan læse medialogy i både København og Aalborg.\nHusk at ansøg senest d. 5. juli kl. 12:00\nDu kan møde os til åbent hus d. 6 februar 13:00 til 17:00!\nFredrik Bajers Vej 7K\nPostboks 159 9100 Aalborg\nTelefon: 9940 9940\nMail: aau@aau.dk\n\nDu kan også finde os på\n(facebook logo): https://www.facebook.com/AalborgUniversitet/\n(ig logo): https://www.instagram.com/aaustudieliv/\n(Snapchat logo): aauuni", width/2, height/footerRectHeightDivider+140);
+    // Set footer title text size
+    textSize(footerTitleTextSize);
+    
+    // Draw footer title text
+    text(footerTitle, width/2, height/footerRectHeightDivider+footerTitleYPadding);
+    
+    // Set footer message text size
+    textSize(footerMessageTextSize);    
+    
+    // Draw footer message text
+    text(footerMessage, width/2, height/footerRectHeightDivider+footerMessageYPadding);
   }
   
   // called inside mouseClicked()

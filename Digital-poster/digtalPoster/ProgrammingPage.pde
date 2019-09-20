@@ -5,7 +5,23 @@ class ProgrammingPage {
   // The page's background image
   PImage bgImage;
   // The path to the background image
-  String backgroundImageUrl = "assets/images/Programmering2.png";
+  String backgroundImageUrl = "assets/images/Programmering.png";
+  
+  // An array of all text messages
+  String[] textMessages = new String[] {
+    "Medialogi består af en række forskellige programmeringskurser, hvor du starter med grundlæggende programmering. Det er derfor ikke en forudsætning at du kan programmere før du begynder. I de første år vil du primært arbejde med Java og processing libraries.",
+    "Senere hen vil du lære mere avanceret teorier som udvikling af komplekse systemer, programmering af interaktion og indenfor kunstig intelligens. Her vil du få en større forståelse for sammensætningen af systemer og du vil efterfølgende have kompetencerne til arbejde som programmør.",
+    "Programmering på medialogi er lidt anderledes end på f.eks. softwareudvikling hvor de udelukkende arbejder med meget tungt kodningsarbejde, hvorimod på medialogi kommer du til at arbejde meget mere visuelt med programmering og i samarbejde med de andre kurser. "
+  };  
+  
+  // A reference to all text boxes on this page
+  Textbox[] textboxes;
+  // An array of all textbox positions
+  PVector[] textboxPositions;
+  // An array of all textbox sizes
+  PVector[] textboxSizes;  
+  // The number of pixels the textbox should indent on x axis
+  float textboxPaddingX = 40;
 
   // called inside setup()
   // Use this function to setup variables
@@ -13,6 +29,29 @@ class ProgrammingPage {
   public void init() {
     // Load the image from our assets folder
     bgImage = loadImage(backgroundImageUrl);
+    
+    // Create an instance of a textbox array with same the length as 'textMessages'
+    textboxes = new Textbox[textMessages.length];
+
+    // Declare the size of the text boxes
+    textboxSizes = new PVector[] {
+      new PVector(240, 190),
+      new PVector(240, 190),
+      new PVector(240, 160)
+    };
+    
+    // Declare the position of the text boxes
+    textboxPositions = new PVector[] {
+      new PVector(textboxPaddingX, 130),
+      new PVector(width-textboxPaddingX-textboxSizes[1].x, 130),
+      new PVector(textboxPaddingX, 360)
+    };
+    
+    // Create an instance of a textbox for each message, position and size
+    for (int i = 0; i < textMessages.length; i++) {
+      textboxes[i] = new Textbox(
+          textboxPositions[i], textboxSizes[i], textMessages[i]);
+    }
   }
 
   // the global navigate(string) function
@@ -27,12 +66,11 @@ class ProgrammingPage {
   public void display() {
     // Draw the background image
     image(bgImage, 0, 0, width, height);
-
-    // demo line
-    line(width/2, 0, width/2, height);
-    // demo text
-    fill(0);
-    text(label, 100, 100);
+    
+    // draw text boxes
+    for (int i = 0; i < textboxes.length; i++) {
+      textboxes[i].display();
+    }
   }
 
   // called inside mouseClicked()
@@ -45,7 +83,7 @@ class ProgrammingPage {
       // or if the user clicks the right side of the screen
     } else if (Utility.clickedRightSideOfTheScreen(new PVector(mouseX, mouseY), width, height)) {
       // navigate to the graphic design Page
-      navigate(graphicDesignPage.label);
+      navigate(projectPage.label);
     }
   }
 }

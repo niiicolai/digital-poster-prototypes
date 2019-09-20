@@ -10,7 +10,7 @@ AvsPage avsPage = new AvsPage();
 // A reference to the programming page
 ProgrammingPage programmingPage = new ProgrammingPage();
 // A reference to the graphic design page
-GraphicDesignPage graphicDesignPage = new GraphicDesignPage();
+ProjectPage projectPage = new ProjectPage();
 // A reference to the info page
 InfoPage infoPage = new InfoPage();
 
@@ -25,9 +25,9 @@ int lastIdleReset;
 // global textbox font
 PFont textboxFont;
 // path to text box font
-String textboxFontUrl = "assets/fonts/FredokaOne-Regular.ttf";
+String textboxFontUrl = "assets/fonts/AvenirLTStd-Medium.otf";
 // the default size of all text
-float defaultTextSize = 12;
+float defaultTextSize = 14;
 
 // Run only once
 void setup() {
@@ -46,7 +46,7 @@ void setup() {
   startPage.init();
   avsPage.init();
   programmingPage.init();
-  graphicDesignPage.init();
+  projectPage.init();
   infoPage.init();
 }
 
@@ -60,8 +60,8 @@ void draw() {
     avsPage.display();
   } else if (currentPage == programmingPage.label) {
     programmingPage.display();
-  } else if (currentPage == graphicDesignPage.label) {
-    graphicDesignPage.display();
+  } else if (currentPage == projectPage.label) {
+    projectPage.display();
   } else if (currentPage == infoPage.label) {
     infoPage.display();
   }
@@ -88,8 +88,8 @@ void mouseClicked() {
     avsPage.OnMouseClicked();
   } else if (currentPage == programmingPage.label) {
     programmingPage.OnMouseClicked();
-  } else if (currentPage == graphicDesignPage.label) {
-    graphicDesignPage.OnMouseClicked();
+  } else if (currentPage == projectPage.label) {
+    projectPage.OnMouseClicked();
   } else if (currentPage == infoPage.label) {
     infoPage.OnMouseClicked();
   }
@@ -105,8 +105,8 @@ public void navigate(String nextPage) {
     avsPage.hide();
   } else if (currentPage == programmingPage.label) {
     programmingPage.hide();
-  } else if (currentPage == graphicDesignPage.label) {
-    graphicDesignPage.hide();
+  } else if (currentPage == projectPage.label) {
+    projectPage.hide();
   } else if (currentPage == infoPage.label) {
     infoPage.hide();
   }

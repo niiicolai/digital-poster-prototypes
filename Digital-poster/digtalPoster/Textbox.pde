@@ -2,41 +2,33 @@ class Textbox {
   // The top left point of the rect
   private PVector position;
   // The rect's length and height relative to the position
-  private PVector size;
+  private PVector size;  
   
   // The text's fill color
-  private color textColor;
+  public color textColor = color(255);
   // The rect's fill color 
-  private color rectFillColor;
+  public color rectFillColor = color(33, 26, 82);
   // The rect's stroke color
-  private color rectStrokeColor;
+  public color rectStrokeColor = color(33, 26, 82);
   
   // The message this textbox should display
   private String message;
   // The number of pixels between the top left point and the text
-  private float textIndent;
+  public float textIndent = 15;
+  // Declare rounded corners on the rect
+  public float rectRoundedCorner = 3;
   // The size of the text
-  private float textSize;
-  // The way the text should align
-  private int textAlignment;
+  //private float textSize;
+  // Declare the text alignment
+  public int textAlignment = LEFT;
   // The font of the text box
   // Set to the global textbox by default
   public PFont textFont = textboxFont;
   
-  Textbox(PVector tempPosition, PVector tempSize, color tempTextColor, 
-          color tempRectFillColor, color tempRectStrokeColor, 
-          String tempMessage, float tempTextIndent, float tempTextSize,
-          int tempTextAlign) {
-    
+  Textbox(PVector tempPosition, PVector tempSize, String tempMessage) {
     position = tempPosition;
     size = tempSize;
-    textColor = tempTextColor;
-    rectFillColor = tempRectFillColor;
-    rectStrokeColor = tempRectStrokeColor;
     message = tempMessage;
-    textIndent = tempTextIndent;
-    textSize = tempTextSize;
-    textAlignment = tempTextAlign;
   }
  
   // Draw the textbox
@@ -48,13 +40,13 @@ class Textbox {
     stroke(rectStrokeColor);
     
     // Draw a rect
-    rect(position.x, position.y, size.x, size.y);
+    rect(position.x, position.y, size.x, size.y+textIndent, rectRoundedCorner);
     
     // Set text color
     fill(textColor);
     
     // Set the text size
-    textSize(textSize);
+    //textSize(textSize);
     
     // Set text alignment
     textAlign(textAlignment);

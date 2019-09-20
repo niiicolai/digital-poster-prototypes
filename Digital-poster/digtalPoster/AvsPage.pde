@@ -5,25 +5,22 @@ class AvsPage {
   // The page's background image
   PImage bgImage;
   // The path to the background image
-  String backgroundImageUrl = "assets/images/Audio_Visual_Sketching.png";
+  String backgroundImagePath = "assets/images/audioVisualSketching.png";
   
-  // Text box color
-  color textboxColor = color(0);
-  // Text box fill color
-  color textboxFillColor = color(255);
-  // Text box stroke color
-  color textboxStrokeColor = color(0);
-  // Text box text indentation
-  float textboxTextIndent = 25;
-  // Text box text size
-  float textboxTextSize = 10;
-  // Text box text alignment
-  int textboxTextAlignment = LEFT;
+  // The start page's character
+  PImage characterImage;
+  // The path to the character image
+  String characterImagePath = "assets/images/demo-character.png";
+  // The position of the character image
+  PVector characterPosition;
+  // The size of the character image
+  PVector characterSize = new PVector(150, 190);
+  
   // An array of all text messages
   String[] textMessages = new String[] {
     "Medialogi er en videregående uddannelse på AAU CPH som fokuserer på computerteknologi, kreativitet og praksis. Medialogi kombinerer viden om lyd, design, 3D, matematik, data, programmering og meget mere til at producere lærerige produkter, spil og software.",
-    "I Audio Visuel Sketching kommer du til lære hvordan du kommunikerer din gode idé igennem skitser, grafisk design, fysiske prototyper, fotos, 3D-print, 3D-modellering, og animationer. Derudover kommer du til at arbejde med pipelines, storyboarding, pre-visualiseringer og animatic til at producere audiovisuelle kortfilm og animationsproduktioner. Disse projekter kan vare op til et helt semester hvor du arbejder i grupper af 5-6 personer.",
-    "Allerede i dit første semester skal du producere en kortfilm ved brug af animationer, live-action optagelser, 3D-modeller og grafisk design. Det handler dog ikke kun om at lave film. Filmproduktionen er bare en, af mange måder, at lære tingene på. Hvis du vælger at gå på Medialogy kommer du helt klart til at lære en helt masse om grafisk design, farver, komposition og meget mere på AVS kurset. "
+    "I Audio Visuel Sketching kommer du til lære hvordan du kommunikerer din gode idé igennem skitser, grafisk design, fysiske prototyper, fotos, 3D-print, 3D-modellering, og animationer. ",
+    "Derudover kommer du også til at arbejde med pipelines, storyboarding, pre-visualiseringer og animatic til at producere audiovisuelle kortfilm og animationsproduktioner. "
   };  
   
   // A reference to all text boxes on this page
@@ -32,39 +29,43 @@ class AvsPage {
   PVector[] textboxPositions;
   // An array of all textbox sizes
   PVector[] textboxSizes;  
+  // The number of pixels the textbox should indent on x axis
+  float textboxPaddingX = 40;
 
   // called inside setup()
   // Use this function to setup variables
   // after setting processing display windows size() etc.
   public void init() {
     // Load the image from our assets folder
-    bgImage = loadImage(backgroundImageUrl);        
+    bgImage = loadImage(backgroundImagePath);  
+    
+    // Load the image from the assets folder
+    characterImage = loadImage(characterImagePath);
+    
+    // Set character position based on height and width
+    characterPosition = new PVector(width/2, height/1.5);
     
     // Create an instance of a textbox array with same the length as 'textMessages'
     textboxes = new Textbox[textMessages.length];
+
+    // Declare the size of the text boxes
+    textboxSizes = new PVector[] {
+      new PVector(240, 190),
+      new PVector(240, 190),
+      new PVector(width-textboxPaddingX*2, 70)
+    };
     
     // Declare the position of the text boxes
     textboxPositions = new PVector[] {
-      new PVector(200, 200),
-      new PVector(200, 400),
-      new PVector(200, 600)
-    };
-    
-    // Declare the size of the text boxes
-    textboxSizes = new PVector[] {
-      new PVector(320, 190),
-      new PVector(320, 190),
-      new PVector(320, 190)
+      new PVector(textboxPaddingX, 150),
+      new PVector(width-textboxPaddingX-textboxSizes[1].x, 150),
+      new PVector(textboxPaddingX, 385)
     };
     
     // Create an instance of a textbox for each message, position and size
     for (int i = 0; i < textMessages.length; i++) {
       textboxes[i] = new Textbox(
-          textboxPositions[i], textboxSizes[i], textboxColor, 
-          textboxFillColor, textboxStrokeColor, 
-          textMessages[i], textboxTextIndent, textboxTextSize,
-          textboxTextAlignment
-      );
+          textboxPositions[i], textboxSizes[i], textMessages[i]);
     }
   }
 
@@ -85,6 +86,10 @@ class AvsPage {
     for (int i = 0; i < textboxes.length; i++) {
       textboxes[i].display();
     }
+    
+    // Draw the character image
+    image(characterImage, characterPosition.x-characterSize.x, characterPosition.y, 
+                          characterSize.x, characterSize.y);
   }
 
   // called inside mouseClicked()

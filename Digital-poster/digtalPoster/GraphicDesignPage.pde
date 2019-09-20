@@ -5,7 +5,7 @@ class ProjectPage {
   // The page's background image
   PImage bgImage;
   // The path to the background image
-  String backgroundImageUrl = "assets/images/Grafisk_Design.png";
+  String backgroundImageUrl = "assets/images/projects.png";
   
   // An array of all text messages
   String[] textMessages = new String[] {

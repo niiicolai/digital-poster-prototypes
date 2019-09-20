@@ -1,3 +1,7 @@
+import gifAnimation.*;
+
+PApplet pApplet = this;
+
 // The code display a page based on currentScene
 String currentPage;
 // The label of the default page

@@ -3,16 +3,17 @@ class StartPage {
   public String label = "START";
   
   // The page's background image
-  PImage bgImage;
-  // The path to the background image
-  String backgroundImageUrl = "assets/images/Front_Page.png";
+  Gif backgroundImageGif;
+  // The path to the background gif
+  String backgroundImageUrl = "assets/images/frontPage.gif";
   
   // called inside setup()
   // Use this function to setup variables
   // after setting processing display windows size() etc.
   public void init() {                                        
     // Load the image from our assets folder
-    bgImage = loadImage(backgroundImageUrl);
+    backgroundImageGif = new Gif(pApplet, backgroundImageUrl);
+    backgroundImageGif.play();
   }
   
   // the global navigate(string) function
@@ -27,7 +28,7 @@ class StartPage {
   // Use this function to display page elements
   public void display() {
     // Draw the background image
-    image(bgImage, 0, 0, width, height);
+    image(backgroundImageGif, 0, 0, width, height);
   }
   
   // called inside mouseClicked()

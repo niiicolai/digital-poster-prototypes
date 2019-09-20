@@ -5,7 +5,7 @@ class AvsPage {
   // The page's background image
   PImage bgImage;
   // The path to the background image
-  String backgroundImageUrl = "assets/images/Audio_Visual_Sketching.png";
+  String backgroundImageUrl = "assets/images/audioVisualSketching.png";
   
   // An array of all text messages
   String[] textMessages = new String[] {

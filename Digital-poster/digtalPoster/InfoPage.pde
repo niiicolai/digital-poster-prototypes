@@ -5,7 +5,7 @@ class InfoPage {
   // The page's background image
   PImage bgImage;
   // The path to the background image
-  String backgroundImageUrl = "assets/images/Info.jpg";
+  String backgroundImageUrl = "assets/images/info.jpg";
   
   // The footer rect's fill color 
   color footerRectFillColor = color(33, 26, 82);

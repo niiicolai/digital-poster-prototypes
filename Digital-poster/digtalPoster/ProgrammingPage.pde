@@ -5,7 +5,7 @@ class ProgrammingPage {
   // The page's background image
   PImage bgImage;
   // The path to the background image
-  String backgroundImageUrl = "assets/images/Programmering.png";
+  String backgroundImageUrl = "assets/images/programming.png";
   
   // An array of all text messages
   String[] textMessages = new String[] {

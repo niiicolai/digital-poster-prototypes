@@ -5,7 +5,16 @@ class ProjectPage {
   // The page's background image
   PImage bgImage;
   // The path to the background image
-  String backgroundImageUrl = "assets/images/projects.png";
+  String backgroundImagePath = "assets/images/projects.png";
+  
+  // The start page's character
+  PImage characterImage;
+  // The path to the character image
+  String characterImagePath = "assets/images/demo-character.png";
+  // The position of the character image
+  PVector characterPosition;
+  // The size of the character image
+  PVector characterSize = new PVector(150, 190);
   
   // An array of all text messages
   String[] textMessages = new String[] {
@@ -28,7 +37,13 @@ class ProjectPage {
   // after setting processing display windows size() etc.
   public void init() {
     // Load the image from our assets folder
-    bgImage = loadImage(backgroundImageUrl);
+    bgImage = loadImage(backgroundImagePath);
+    
+    // Load the image from the assets folder
+    characterImage = loadImage(characterImagePath);
+    
+    // Set character position based on height and width
+    characterPosition = new PVector(width/2, height/1.5);
     
      // Create an instance of a textbox array with same the length as 'textMessages'
     textboxes = new Textbox[textMessages.length];
@@ -37,14 +52,14 @@ class ProjectPage {
     textboxSizes = new PVector[] {
       new PVector(240, 190),
       new PVector(240, 190),
-      new PVector(240, 160)
+      new PVector(width-textboxPaddingX*2, 70)
     };
     
     // Declare the position of the text boxes
     textboxPositions = new PVector[] {
-      new PVector(textboxPaddingX, 130),
-      new PVector(width-textboxPaddingX-textboxSizes[1].x, 130),
-      new PVector(textboxPaddingX, 360)
+      new PVector(textboxPaddingX, 150),
+      new PVector(width-textboxPaddingX-textboxSizes[1].x, 150),
+      new PVector(textboxPaddingX, 385)
     };
     
     // Create an instance of a textbox for each message, position and size
@@ -72,6 +87,10 @@ class ProjectPage {
     for (int i = 0; i < textboxes.length; i++) {
       textboxes[i].display();
     }
+    
+    // Draw the character image
+    image(characterImage, characterPosition.x-characterSize.x, characterPosition.y, 
+                          characterSize.x, characterSize.y);
   }
   
   // called inside mouseClicked()

@@ -35,14 +35,20 @@ class AvsPage {
   // The number of pixels the textbox should indent on x axis
   float textboxPaddingX = 40;
   
+  // An array of sequentialShapes being drawned before display
+  SequentailFadeIn[] sequentialShapes;
+  
+  int imageTint = 0;
+  
   SequentailFadeIn sequentialLine;
   SequentailFadeIn sequentialRect;
   SequentailFadeIn sequentialRect1;
   SequentailFadeIn sequentialRect2;
-  color sequentialLineStrokeColor = color(255);
-  PVector sequentialVelocity = new PVector(10, 10);
-  PVector sequentialVelocity2 = new PVector(16, 16);
-  float strokeWeight = 3;
+  SequentailFadeIn sequentialRect3;
+  color sequentialLineStrokeColor = color(89, 79, 191);
+  PVector sequentialVelocity = new PVector(40, 40);
+  PVector sequentialVelocity2 = new PVector(55, 50);
+  float strokeWeight = 1;
 
   // called inside setup()
   // Use this function to setup variables
@@ -81,10 +87,10 @@ class AvsPage {
     }
     
     PVector[] seqLinePositions = new PVector[]{
-      new PVector(0, height/2), 
-      new PVector(width, height/2)      
+      new PVector(0, characterPosition.y+characterSize.y-45), 
+      new PVector(width, characterPosition.y+characterSize.y-45)      
     };
-    sequentialLine = new SequentailFadeIn(SEQUENTIALLINE, seqLinePositions, sequentialVelocity, sequentialLineStrokeColor, color(backgroundColor), strokeWeight);
+    sequentialLine = new SequentailFadeIn(SEQUENTIALLINE, seqLinePositions, new PVector(20, 0), sequentialLineStrokeColor, color(backgroundColor), strokeWeight);
     
     PVector[] seqRectPositions = new PVector[]{
       // top left corner
@@ -121,30 +127,50 @@ class AvsPage {
       new PVector(textboxPositions[2].x+textboxSizes[2].x, textboxPositions[2].y)
     };
     sequentialRect2 = new SequentailFadeIn(SEQUENTIALRECT, seqRect2Positions, sequentialVelocity2, sequentialLineStrokeColor, color(backgroundColor), strokeWeight);
+    
+    sequentialShapes = new SequentailFadeIn[] {
+      sequentialLine, sequentialRect, sequentialRect1, sequentialRect2
+    };
   }
 
   // the global navigate(string) function
-  // call hide on active pages before switch
-  public void hide() {
+  // call beforeDisplay on active page before display
+  public void beforeDisplay() {
+    for (int i = 0; i < sequentialShapes.length; i++) {
+       sequentialShapes[i].reset(); 
+    }
+    imageTint = 0;
   }
 
   // the global draw() function
   // call this function if the global 'currentScene'
   // variable match its label
   // Use this function to display page elements
-  public void display() {
-    background(backgroundColor);
-    if (!sequentialRect.finished && !sequentialRect1.finished && !sequentialRect2.finished) {
+  public void display() {  
+    image(bgImage, 0, 0, width, height);
+    tint(imageTint);
+    if (imageTint<255)
+      imageTint+=5;
+    boolean sequentialTransitionFinished = true;
+    for (int i = 0; i < sequentialShapes.length; i++) {
+      if (!sequentialShapes[i].finished) {
+        sequentialTransitionFinished = false;
+        break;
+      }
+    }
+    
+    if (!sequentialTransitionFinished) {
+      //background(backgroundColor);
       
-      //sequentialLine.display();      
-      sequentialRect.display();
-      sequentialRect1.display();
-      sequentialRect2.display();
+      for (int i = 0; i < sequentialShapes.length; i++) {
+        sequentialShapes[i].display(); 
+      }
+      
       return;
     }
     
     // Draw the background image
-    image(bgImage, 0, 0, width, height);
+    
 
     // draw text boxes
     for (int i = 0; i < textboxes.length; i++) {

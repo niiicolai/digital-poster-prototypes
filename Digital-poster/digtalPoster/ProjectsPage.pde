@@ -32,6 +32,9 @@ class ProjectPage {
   // The number of pixels the textbox should indent on x axis
   float textboxPaddingX = 40;
   
+  // An array of sequentialShapes being drawned before display
+  SequentailFadeIn[] sequentialShapes = new SequentailFadeIn[0];
+  
   // called inside setup()
   // Use this function to setup variables
   // after setting processing display windows size() etc.
@@ -70,9 +73,11 @@ class ProjectPage {
   }
   
   // the global navigate(string) function
-  // call hide on active pages before switch
-  public void hide() {
-    
+  // call beforeDisplay on active page before display
+  public void beforeDisplay() {
+    for (int i = 0; i < sequentialShapes.length; i++) {
+       sequentialShapes[i].reset(); 
+    }
   }
   
   // the global draw() function
@@ -80,6 +85,7 @@ class ProjectPage {
   // variable match its label
   // Use this function to display page elements
   public void display() {
+    tint(255);
     // Draw the background image
     image(bgImage, 0, 0, width, height);
     

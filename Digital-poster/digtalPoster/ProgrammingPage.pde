@@ -31,6 +31,9 @@ class ProgrammingPage {
   PVector[] textboxSizes;  
   // The number of pixels the textbox should indent on x axis
   float textboxPaddingX = 40;
+  
+  // An array of sequentialShapes being drawned before display
+  SequentailFadeIn[] sequentialShapes = new SequentailFadeIn[0];
 
   // called inside setup()
   // Use this function to setup variables
@@ -70,8 +73,12 @@ class ProgrammingPage {
   }
 
   // the global navigate(string) function
-  // call hide on active pages before switch
-  public void hide() {
+  // call beforeDisplay on active page before display
+  public void beforeDisplay() {
+    tint(255);
+    for (int i = 0; i < sequentialShapes.length; i++) {
+       sequentialShapes[i].reset(); 
+    }
   }
 
   // the global draw() function

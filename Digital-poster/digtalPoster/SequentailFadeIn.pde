@@ -46,12 +46,17 @@ class SequentailFadeIn {
     strokeColor = tempStrokeColor;
     fillColor = tempFillColor;
     strokeSize = tempStrokeSize;
-    
-    drawedElement = new boolean[tempPositions.length];
-    animationPosition = new PVector[tempPositions.length];
-    for (int i = 0; i < tempPositions.length; i++) {
-       animationPosition[i] = new PVector(tempPositions[i].x, tempPositions[i].y); 
+  }
+  
+  public void reset() {
+    drawedElement = new boolean[positions.length];
+    animationPosition = new PVector[positions.length];
+    for (int i = 0; i < positions.length; i++) {
+       animationPosition[i] = new PVector(positions[i].x, positions[i].y); 
     }
+    
+    animationIndex = 0;
+    finished = false;
   }
   
   // run display until a sequential animation 'finished' returns true
@@ -84,7 +89,37 @@ class SequentailFadeIn {
       return; 
     }
     
-    animationPosition[0].add(velocity);        
+
+    boolean moveOnYAxis = animationPosition[0].x == positions[1].x;
+    boolean increase = (moveOnYAxis && animationPosition[0].y < positions[1].y) ||
+                         (!moveOnYAxis && animationPosition[0].x < positions[1].x);
+    float speed = (increase ? 1 : -1);
+    PVector tempVelocity = (moveOnYAxis ? new PVector(0, speed*velocity.y) : new PVector(speed*velocity.x, 0));
+    boolean velocityTooHighOnX = (increase ? animationPosition[0].x+tempVelocity.x > positions[1].x :
+                                            animationPosition[0].x+tempVelocity.x < positions[1].x);
+    if (velocityTooHighOnX) {
+      tempVelocity.x = speed*5;
+    }
+      
+    boolean velocityTooHighOnY = (increase ? animationPosition[0].y+tempVelocity.y > positions[1].y :
+                                            animationPosition[0].y+tempVelocity.y < positions[1].y);
+    if (velocityTooHighOnY) {
+      tempVelocity.y = speed*5;
+    }
+    
+     velocityTooHighOnX = (increase ? animationPosition[0].x+tempVelocity.x > positions[1].x :
+                                            animationPosition[0].x+tempVelocity.x < positions[1].x);
+    if (velocityTooHighOnX) {
+      tempVelocity.x = speed;
+    }
+      
+    velocityTooHighOnY = (increase ? animationPosition[0].y+tempVelocity.y > positions[1].y :
+                                            animationPosition[0].y+tempVelocity.y < positions[1].y);
+    if (velocityTooHighOnY) {
+      tempVelocity.y = speed;
+    }
+    
+    animationPosition[0].add(tempVelocity);        
     
     line(positions[0].x, positions[0].y, animationPosition[0].x, animationPosition[0].y);
     
@@ -112,10 +147,34 @@ class SequentailFadeIn {
       boolean velocityTooHighOnX = (increase ? animationPosition[animationIndex].x+tempVelocity.x > positions[nextPointIndex].x :
                                             animationPosition[animationIndex].x+tempVelocity.x < positions[nextPointIndex].x);
       if (velocityTooHighOnX) {
-        tempVelocity.x = speed;
+        tempVelocity.x = speed*10;
       }
       
       boolean velocityTooHighOnY = (increase ? animationPosition[animationIndex].y+tempVelocity.y > positions[nextPointIndex].y :
+                                            animationPosition[animationIndex].y+tempVelocity.y < positions[nextPointIndex].y);
+      if (velocityTooHighOnY) {
+        tempVelocity.y = speed*10;
+      }
+      
+      velocityTooHighOnX = (increase ? animationPosition[animationIndex].x+tempVelocity.x > positions[nextPointIndex].x :
+                                            animationPosition[animationIndex].x+tempVelocity.x < positions[nextPointIndex].x);
+      if (velocityTooHighOnX) {
+        tempVelocity.x = speed*5;
+      }
+      
+      velocityTooHighOnY = (increase ? animationPosition[animationIndex].y+tempVelocity.y > positions[nextPointIndex].y :
+                                            animationPosition[animationIndex].y+tempVelocity.y < positions[nextPointIndex].y);
+      if (velocityTooHighOnY) {
+        tempVelocity.y = speed*5;
+      }
+      
+      velocityTooHighOnX = (increase ? animationPosition[animationIndex].x+tempVelocity.x > positions[nextPointIndex].x :
+                                            animationPosition[animationIndex].x+tempVelocity.x < positions[nextPointIndex].x);
+      if (velocityTooHighOnX) {
+        tempVelocity.x = speed;
+      }
+      
+      velocityTooHighOnY = (increase ? animationPosition[animationIndex].y+tempVelocity.y > positions[nextPointIndex].y :
                                             animationPosition[animationIndex].y+tempVelocity.y < positions[nextPointIndex].y);
       if (velocityTooHighOnY) {
         tempVelocity.y = speed;

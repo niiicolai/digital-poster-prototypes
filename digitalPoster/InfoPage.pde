@@ -41,8 +41,8 @@ class InfoPage {
   
   // Footer message text
   String footerMessage = 
-    "Hvis du vil læse mere gå da ind på aau.dk og find Medialogy eller gå direkte ind på\n" +
-    "https://www.aau.dk/uddannelser/bachelor/medialogi.\n" +
+    "Hvis du vil læse mere gå da ind på aau.dk og find Medialogy\n" +
+    "eller gå direkte ind på https://www.aau.dk/uddannelser/bachelor/medialogi.\n" +
     "Du kan læse medialogy i både København og Aalborg.\n" +
     "Husk at ansøg senest d. 5. juli kl. 12:00\n" +
     "Du kan møde os til åbent hus d. 6 februar 13:00 til 17:00!\n" +

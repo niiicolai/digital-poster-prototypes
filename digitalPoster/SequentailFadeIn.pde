@@ -131,7 +131,7 @@ class SequentailFadeIn {
   
   private void drawRect() {
     if (finished) {
-      return; 
+      //return; 
     }        
     
     boolean drawedAll = drawedElement[0] && drawedElement[1] && drawedElement[2] && drawedElement[3];

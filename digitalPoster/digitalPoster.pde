@@ -1,6 +1,12 @@
-import gifAnimation.*;
+import gifAnimation.*;  
+import processing.sound.*;
 
 PApplet pApplet = this;
+
+// click sound file
+SoundFile clickSoundFile;
+// click sound file path
+String clickSoundFilePath = "assets/soundFiles/ui_menu_button_beep_16.wav";
 
 // The code display a page based on currentScene
 String currentPage;
@@ -40,6 +46,9 @@ void setup() {
   
   // Load global text box font
   textboxFont = createFont(textboxFontUrl, defaultTextSize);
+  
+  // Load the click sound file
+  clickSoundFile = new SoundFile(this, clickSoundFilePath);
   
   // Set start page as default page
   defaultPage = startPage.label;
@@ -101,23 +110,26 @@ void mouseClicked() {
 
 // A function used to switch to a new page.
 // Takes a string which needs to match a page label
-public void navigate(String nextPage) {
-  // Hide the old page
-  if (currentPage == startPage.label) {
-    startPage.hide();
-  } else if (currentPage == avsPage.label) {
-    avsPage.hide();
-  } else if (currentPage == programmingPage.label) {
-    programmingPage.hide();
-  } else if (currentPage == projectPage.label) {
-    projectPage.hide();
-  } else if (currentPage == infoPage.label) {
-    infoPage.hide();
-  }
+public void navigate(String nextPage) {  
+  // play click sound
+  clickSoundFile.play();
   
   // Set current scene to the new page
   currentPage = nextPage;
   
+  // call beforeDisplay()
+  if (currentPage == startPage.label) {
+    startPage.beforeDisplay();
+  } else if (currentPage == avsPage.label) {
+    avsPage.beforeDisplay();
+  } else if (currentPage == programmingPage.label) {
+    programmingPage.beforeDisplay();
+  } else if (currentPage == projectPage.label) {
+    projectPage.beforeDisplay();
+  } else if (currentPage == infoPage.label) {
+    infoPage.beforeDisplay();
+  }
+    
   // Reset the idle timer to ensure the user
   // don't get sent back to the frontpage
   // before they are done

@@ -2,10 +2,13 @@ class ProjectPage {
   // label used to navigate between pages
   public String label = "PROJECTPAGE";
   
+  // used to check if a page is done drawing
+  boolean isDisplaying;
+  
   // The page's background image
   PImage bgImage;
   // The path to the background image
-  String backgroundImagePath = "assets/images/projects.png";
+  String backgroundImagePath = "projects.png";
   
   // The page's background color
   color backgroundColor = color(33, 26, 82);
@@ -13,7 +16,7 @@ class ProjectPage {
   // The start page's character
   PImage characterImage;
   // The path to the character image
-  String characterImagePath = "assets/images/demo-character.png";
+  String characterImagePath = "demo-character.png";
   // The position of the character image
   PVector characterPosition;
   // The size of the character image
@@ -143,6 +146,9 @@ class ProjectPage {
     // set textbox alpha to zero
     // in order to fade textboxes in on page switch
     textboxAlpha = 0;
+    
+    // set to false so we can display this page another time
+    isDisplaying = false;
   }
   
   // the global draw() function
@@ -150,6 +156,11 @@ class ProjectPage {
   // variable match its label
   // Use this function to display page elements
   public void display() {
+    // stop executing display() if it's already is displayed
+    if (isDisplaying) {
+      return;
+    }
+    
     // set background color
     background(backgroundColor);
     
@@ -210,6 +221,13 @@ class ProjectPage {
       
       // increment textbox alpha
       textboxAlpha += textboxAlphaIncrement; 
+    } else {
+      // if the textboxes are faded in, which is the last draw task
+      // we set isDisplay to true
+      isDisplaying = true;
+      
+      g.removeCache(bgImage);
+      g.removeCache(characterImage);
     }
 
     // draw text boxes

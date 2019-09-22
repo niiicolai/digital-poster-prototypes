@@ -2,10 +2,13 @@ class AvsPage {
   // label used to navigate between pages
   public String label = "AVS";
   
+  // used to check if a page is done drawing
+  boolean isDisplaying;
+  
   // The page's background image
   PImage bgImage;
   // The path to the background image
-  String backgroundImagePath = "assets/images/audioVisualSketching.png";
+  String backgroundImagePath = "audioVisualSketching.png";
   
   // The page's background color
   color backgroundColor = color(33, 26, 82);
@@ -13,7 +16,7 @@ class AvsPage {
   // The start page's character
   PImage characterImage;
   // The path to the character image
-  String characterImagePath = "assets/images/demo-character.png";
+  String characterImagePath = "demo-character.png";
   // The position of the character image
   PVector characterPosition;
   // The size of the character image
@@ -141,13 +144,21 @@ class AvsPage {
     // set textbox alpha to zero
     // in order to fade textboxes in on page switch
     textboxAlpha = 0;
+    
+    // set to false so we can display this page another time
+    isDisplaying = false;
   }
 
   // the global draw() function
   // call this function if the global 'currentScene'
   // variable match its label
   // Use this function to display page elements
-  public void display() {
+  public void display() { 
+    // stop executing display() if it's already is displayed
+    if (isDisplaying) {
+      return;
+    }
+    
     // set background color
     background(backgroundColor);
     
@@ -165,7 +176,7 @@ class AvsPage {
     
     // Draw the character image
     image(characterImage, characterPosition.x, characterPosition.y, 
-                          characterSize.x, characterSize.y);
+                          characterSize.x, characterSize.y);                              
 
     // Declare a boolean which says all transitions is finished
     boolean sequentialTransitionFinished = true;
@@ -207,7 +218,14 @@ class AvsPage {
       }
       
       // increment textbox alpha
-      textboxAlpha += textboxAlphaIncrement; 
+      textboxAlpha += textboxAlphaIncrement;             
+    } else {
+      // if the textboxes are faded in, which is the last draw task
+      // we set isDisplay to true
+      isDisplaying = true;
+      
+      g.removeCache(bgImage);
+      g.removeCache(characterImage);
     }
 
     // draw text boxes

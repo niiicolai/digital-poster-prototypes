@@ -8,7 +8,7 @@ class AvsPage {
   String backgroundImagePath = "assets/images/audioVisualSketching.png";
   
   // The page's background color
-  color backgroundColor = color(203, 222, 223);
+  color backgroundColor = color(33, 26, 82);
   
   // The start page's character
   PImage characterImage;
@@ -17,13 +17,19 @@ class AvsPage {
   // The position of the character image
   PVector characterPosition;
   // The size of the character image
-  PVector characterSize = new PVector(150, 190);
+  PVector characterSize = new PVector(70, 190);
   
   // An array of all text messages
   String[] textMessages = new String[] {
-    "Medialogi er en videregående uddannelse på AAU CPH som fokuserer på computerteknologi, kreativitet og praksis. Medialogi kombinerer viden om lyd, design, 3D, matematik, data, programmering og meget mere til at producere lærerige produkter, spil og software.",
-    "I Audio Visuel Sketching kommer du til lære hvordan du kommunikerer din gode idé igennem skitser, grafisk design, fysiske prototyper, fotos, 3D-print, 3D-modellering, og animationer. ",
-    "Derudover kommer du også til at arbejde med pipelines, storyboarding, pre-visualiseringer og animatic til at producere audiovisuelle kortfilm og animationsproduktioner. "
+    "Medialogi er en videregående uddannelse på AAU CPH som fokuserer på computerteknologi, " +
+    "kreativitet og praksis. Medialogi kombinerer viden om lyd, design, 3D, matematik, data, " +
+    "programmering og meget mere til at producere lærerige produkter, spil og software.",
+    
+    "I Audio Visuel Sketching kommer du til lære hvordan du kommunikerer din gode idé igennem " + 
+    "skitser, grafisk design, fysiske prototyper, fotos, 3D-print, 3D-modellering, og animationer. ",
+    
+    "Derudover kommer du også til at arbejde med pipelines, storyboarding, pre-visualiseringer og " +
+    "animatic til at producere audiovisuelle kortfilm og animationsproduktioner. "
   };  
   
   // A reference to all text boxes on this page
@@ -33,22 +39,33 @@ class AvsPage {
   // An array of all textbox sizes
   PVector[] textboxSizes;  
   // The number of pixels the textbox should indent on x axis
-  float textboxPaddingX = 40;
+  float textboxPaddingX = 40; 
+  // The number of alpha applied to all images
+  int textboxAlpha = 0;  
+  // How fast the alpha should increment
+  int textboxAlphaIncrement = 30;
+  // The maximum textbox alpha
+  int textboxAlphaMax = 255;
+  // textbox rect fill color rgb values
+  PVector rectFillColorRgb = new PVector(33, 26, 82);
+  
+  // The number of alpha applied to all images
+  int imageTintAlpha = 0;  
+  // How fast the alpha should increment
+  int imageTintAlphaIncrement = 20;
+  // The maximum image alpha
+  int imageTintAlphaMax = 255;
+  // Image tint rgb color
+  color imageTintRgb = color(255);
   
   // An array of sequentialShapes being drawned before display
   SequentailFadeIn[] sequentialShapes;
-  
-  int imageTint = 0;
-  
-  SequentailFadeIn sequentialLine;
-  SequentailFadeIn sequentialRect;
-  SequentailFadeIn sequentialRect1;
-  SequentailFadeIn sequentialRect2;
-  SequentailFadeIn sequentialRect3;
+  // Sequential line stroke color
   color sequentialLineStrokeColor = color(89, 79, 191);
-  PVector sequentialVelocity = new PVector(40, 40);
-  PVector sequentialVelocity2 = new PVector(55, 50);
-  float strokeWeight = 1;
+  // Sequential rect velocity
+  PVector sequentialRectVelocity = new PVector(70, 50);
+  // Sequential stroke weight
+  float sequentialStrokeWeight = 1;
 
   // called inside setup()
   // Use this function to setup variables
@@ -61,7 +78,7 @@ class AvsPage {
     characterImage = loadImage(characterImagePath);
     
     // Set character position based on height and width
-    characterPosition = new PVector(width/2, height/1.5);
+    characterPosition = new PVector(width/2-characterSize.x/2, height/1.58);
     
     // Create an instance of a textbox array with same the length as 'textMessages'
     textboxes = new Textbox[textMessages.length];
@@ -84,102 +101,119 @@ class AvsPage {
     for (int i = 0; i < textMessages.length; i++) {
       textboxes[i] = new Textbox(
           textboxPositions[i], textboxSizes[i], textMessages[i]);
+    }        
+
+    // Declare an array of sequential shape
+    sequentialShapes = new SequentailFadeIn[textboxPositions.length];
+    for (int i = 0; i < textboxPositions.length; i++) {
+      // Find the positions of our textboxes      
+      PVector[] seqRectPositions = new PVector[]{
+        // top left corner
+        new PVector(textboxPositions[i].x, textboxPositions[i].y), 
+        // bottom left corner
+        new PVector(textboxPositions[i].x, textboxPositions[i].y+textboxSizes[i].y),
+        // bottom right corner
+        new PVector(textboxPositions[i].x+textboxSizes[i].x, textboxPositions[i].y+textboxSizes[i].y),
+        // top right corner
+        new PVector(textboxPositions[i].x+textboxSizes[i].x, textboxPositions[i].y)
+      };
+      
+      // Create a new instances of a sequential rect 
+      sequentialShapes[i] = new SequentailFadeIn(
+        SEQUENTIALRECT, seqRectPositions, sequentialRectVelocity, 
+        sequentialLineStrokeColor, color(backgroundColor), sequentialStrokeWeight);
     }
-    
-    PVector[] seqLinePositions = new PVector[]{
-      new PVector(0, characterPosition.y+characterSize.y-45), 
-      new PVector(width, characterPosition.y+characterSize.y-45)      
-    };
-    sequentialLine = new SequentailFadeIn(SEQUENTIALLINE, seqLinePositions, new PVector(20, 0), sequentialLineStrokeColor, color(backgroundColor), strokeWeight);
-    
-    PVector[] seqRectPositions = new PVector[]{
-      // top left corner
-      new PVector(textboxPositions[0].x, textboxPositions[0].y), 
-      // bottom left corner
-      new PVector(textboxPositions[0].x, textboxPositions[0].y+textboxSizes[0].y),
-      // bottom right corner
-      new PVector(textboxPositions[0].x+textboxSizes[0].x, textboxPositions[0].y+textboxSizes[0].y),
-      // top right corner
-      new PVector(textboxPositions[0].x+textboxSizes[0].x, textboxPositions[0].y)
-    };
-    sequentialRect = new SequentailFadeIn(SEQUENTIALRECT, seqRectPositions, sequentialVelocity, sequentialLineStrokeColor, color(backgroundColor), strokeWeight);
-    
-    PVector[] seqRect1Positions = new PVector[]{
-      // top left corner
-      new PVector(textboxPositions[1].x, textboxPositions[1].y), 
-      // bottom left corner
-      new PVector(textboxPositions[1].x, textboxPositions[1].y+textboxSizes[1].y),
-      // bottom right corner
-      new PVector(textboxPositions[1].x+textboxSizes[1].x, textboxPositions[1].y+textboxSizes[1].y),
-      // top right corner
-      new PVector(textboxPositions[1].x+textboxSizes[1].x, textboxPositions[1].y)
-    };
-    sequentialRect1 = new SequentailFadeIn(SEQUENTIALRECT, seqRect1Positions, sequentialVelocity, sequentialLineStrokeColor, color(backgroundColor), strokeWeight);
-    
-    PVector[] seqRect2Positions = new PVector[]{
-      // top left corner
-      new PVector(textboxPositions[2].x, textboxPositions[2].y), 
-      // bottom left corner
-      new PVector(textboxPositions[2].x, textboxPositions[2].y+textboxSizes[2].y),
-      // bottom right corner
-      new PVector(textboxPositions[2].x+textboxSizes[2].x, textboxPositions[2].y+textboxSizes[2].y),
-      // top right corner
-      new PVector(textboxPositions[2].x+textboxSizes[2].x, textboxPositions[2].y)
-    };
-    sequentialRect2 = new SequentailFadeIn(SEQUENTIALRECT, seqRect2Positions, sequentialVelocity2, sequentialLineStrokeColor, color(backgroundColor), strokeWeight);
-    
-    sequentialShapes = new SequentailFadeIn[] {
-      sequentialLine, sequentialRect, sequentialRect1, sequentialRect2
-    };
   }
 
   // the global navigate(string) function
   // call beforeDisplay on active page before display
   public void beforeDisplay() {
+    // reset all sequential shapes
+    // in order to show them on display
     for (int i = 0; i < sequentialShapes.length; i++) {
        sequentialShapes[i].reset(); 
     }
-    imageTint = 0;
+    
+    // set image tint alpha to zero
+    // in order to fade in the background image
+    imageTintAlpha = 0;
+    
+    // set textbox alpha to zero
+    // in order to fade textboxes in on page switch
+    textboxAlpha = 0;
   }
 
   // the global draw() function
   // call this function if the global 'currentScene'
   // variable match its label
   // Use this function to display page elements
-  public void display() {  
+  public void display() {
+    // set background color
+    background(backgroundColor);
+    
+    // set image tint
+    tint(imageTintRgb, imageTintAlpha);
+    
+    // increment 'imageTint' to fade in images
+    // as long its value is less than image tint alpha max
+    if (imageTintAlpha < imageTintAlphaMax) {
+      imageTintAlpha += imageTintAlphaIncrement; 
+    }
+    
+    // Draw the background image
     image(bgImage, 0, 0, width, height);
-    tint(imageTint);
-    if (imageTint<255)
-      imageTint+=5;
+    
+    // Draw the character image
+    image(characterImage, characterPosition.x, characterPosition.y, 
+                          characterSize.x, characterSize.y);
+
+    // Declare a boolean which says all transitions is finished
     boolean sequentialTransitionFinished = true;
+    // Loop through all sequential shapes
     for (int i = 0; i < sequentialShapes.length; i++) {
+      // if one of the shapes is not finished
       if (!sequentialShapes[i].finished) {
+        // set the boolean to false
         sequentialTransitionFinished = false;
+        // and break the loop since our check is done
         break;
       }
     }
     
+    // if all the sequential transitions wasn't finished
+    // we keep display them
     if (!sequentialTransitionFinished) {
-      //background(backgroundColor);
-      
+      // we loop through our array of sequential shapes
       for (int i = 0; i < sequentialShapes.length; i++) {
+        // and call their display function
         sequentialShapes[i].display(); 
       }
-      
+      // we return 'this' display function
+      // to stop running this function
+      // until our sequential shapes are done drawing
       return;
     }
+    // If all sequential transitions is finished
+    // the code will continue running from this point
+    // and otherwhise not
     
-    // Draw the background image
-    
+    // increment 'textboxAlpha' to fade in textboxes
+    // as long its value is less than textbox alpha max
+    if (textboxAlpha < textboxAlphaMax) {
+      
+      // set rect fill color with the respective textbox alpha
+      for (int i = 0; i < textboxes.length; i++) {
+        textboxes[i].rectFillColor = color(rectFillColorRgb.x, rectFillColorRgb.y, rectFillColorRgb.z, textboxAlpha);
+      }
+      
+      // increment textbox alpha
+      textboxAlpha += textboxAlphaIncrement; 
+    }
 
     // draw text boxes
     for (int i = 0; i < textboxes.length; i++) {
       textboxes[i].display();
     }
-    
-    // Draw the character image
-    image(characterImage, characterPosition.x-characterSize.x, characterPosition.y, 
-                          characterSize.x, characterSize.y);
   }
 
   // called inside mouseClicked()

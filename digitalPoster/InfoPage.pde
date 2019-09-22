@@ -2,10 +2,13 @@ class InfoPage {
   // label used to navigate between pages
   public String label = "INFO";
   
+  // used to check if a page is done drawing
+  boolean isDisplaying;
+  
   // The page's background image
   PImage bgImage;
   // The path to the background image
-  String backgroundImagePath = "assets/images/info.jpg";
+  String backgroundImagePath = "info.jpg";
   
   // The page's background color
   color backgroundColor = color(33, 26, 82);
@@ -13,7 +16,7 @@ class InfoPage {
   // The start page's character
   PImage characterImage;
   // The path to the character image
-  String characterImagePath = "assets/images/demo-character.png";
+  String characterImagePath = "demo-character.png";
   // The position of the character image
   PVector characterPosition = new PVector(0, 30);
   // The size of the character image
@@ -127,6 +130,9 @@ class InfoPage {
     // set textbox alpha to zero
     // in order to fade textboxes in on page switch
     footerRectAlpha = 0;
+    
+    // set to false so we can display this page another time
+    isDisplaying = false;
   }
   
   // the global draw() function
@@ -134,6 +140,11 @@ class InfoPage {
   // variable match its label
   // Use this function to display page elements
   public void display() {
+    // stop executing display() if it's already is displayed
+    if (isDisplaying) {
+      return;
+    }
+    
     // set background color
     background(backgroundColor);
     
@@ -206,6 +217,13 @@ class InfoPage {
       // return at this point if we are fading
       // in the footer rect
       return;
+    } else {
+      // if the footer rect are faded in, which is the last draw task
+      // we set isDisplay to true
+      isDisplaying = true;
+      
+      g.removeCache(bgImage);
+      g.removeCache(characterImage);
     }
     // if the footer rect is done fading
     // the code will continue to from this point

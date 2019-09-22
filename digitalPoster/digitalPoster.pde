@@ -6,7 +6,7 @@ PApplet pApplet = this;
 // click sound file
 SoundFile clickSoundFile;
 // click sound file path
-String clickSoundFilePath = "assets/soundFiles/ui_menu_button_beep_16.wav";
+String clickSoundFilePath = "ui_menu_button_beep_16.wav";
 
 // The code display a page based on currentScene
 String currentPage;
@@ -35,7 +35,7 @@ int lastIdleReset;
 // global textbox font
 PFont textboxFont;
 // path to text box font
-String textboxFontUrl = "assets/fonts/AvenirLTStd-Medium.otf";
+String textboxFontUrl = "AvenirLTStd-Medium.otf";
 // the default size of all text
 float defaultTextSize = 14;
 
@@ -92,8 +92,8 @@ void draw() {
   }    
 }
 
-// called after a mouse button has been pressed and then released
-void mouseClicked() {
+//
+void mousePressed() {
   // call local mouse click function
   if (currentPage == startPage.label) {
     startPage.OnMouseClicked();

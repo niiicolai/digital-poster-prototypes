@@ -3,6 +3,11 @@
 - Find report overview at [Trello](https://trello.com/b/kYEZlh3N/rapport)
 - Find issues that needs contribution at our [project list](https://github.com/niiicolai/digital-poster-prototypes/projects)
 
+## Dependencies
+
+- The Processing Foundation's sound library
+- [gifAnimation processing library](https://github.com/extrapixel/gif-animation)
+
 ## Get started
 
 ### Step 1: 

@@ -92,7 +92,6 @@ void draw() {
   }    
 }
 
-//
 void mousePressed() {
   // call local mouse click function
   if (currentPage == startPage.label) {

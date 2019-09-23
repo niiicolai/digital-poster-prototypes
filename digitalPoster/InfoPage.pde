@@ -10,6 +10,15 @@ class InfoPage {
   // The path to the background image
   String backgroundImagePath = "info.jpg";
   
+  // A reference to the logo
+  PImage aauLogoImage;
+  // The logo image's path
+  String aauLogoImagePath = "AAU_LOGO_WHITE.png";
+  // The position of the logo
+  PVector aauLogoPosition = new PVector(10, 10);
+  // The size of the logo
+  PVector auuLogoSize = new PVector(180, 110);
+  
   // The page's background color
   color backgroundColor = color(33, 26, 82);
   
@@ -90,11 +99,18 @@ class InfoPage {
   // Use this function to setup variables
   // after setting processing display windows size() etc.
   public void init() {
-    // Load the image from our assets folder
+    // Load the image from our data folder
     bgImage = loadImage(backgroundImagePath);
     
-    // Load the image from the assets folder
+    // Load the image from the data folder
     characterImage = loadImage(characterImagePath);
+    
+    // Load the logo from the data folder
+    aauLogoImage = loadImage(aauLogoImagePath);
+    
+    // Set the position of the logo
+    aauLogoPosition = new PVector(aauLogoPosition.x, 
+                                  height-aauLogoPosition.y-auuLogoSize.y);
     
     // Set character position based on height and width
     characterPosition = new PVector(width/2-characterSize.x/2, height/2.7);
@@ -228,6 +244,10 @@ class InfoPage {
     // if the footer rect is done fading
     // the code will continue to from this point
     
+    // Draw the logo image
+    image(aauLogoImage, aauLogoPosition.x, aauLogoPosition.y, 
+                        auuLogoSize.x, auuLogoSize.y);
+    
     // Set text alignment
     textAlign(footerTextAlignment);
     
@@ -245,6 +265,7 @@ class InfoPage {
     
     // Draw footer message text
     text(footerMessage, width/2, height/footerRectHeightDivider+footerMessageYPadding);
+  
   }
   
   // called inside mouseClicked()

@@ -52,9 +52,9 @@ class InfoPage {
     "Frederik Bajers Vej 7K\nPostboks 159 9100 Aalborg\n" +
     "Telefon: 9940 9940\n" +
     "Mail: aau@aau.dk\n\n" +
-    "(facebook logo): https://www.facebook.com/AalborgUniversitet/\n" +
-    "(ig logo): https://www.instagram.com/aaustudieliv/\n" +
-    "(Snapchat logo): aauuni";
+    "facebook.com/AalborgUniversitet\n" +
+    "instagram.com/aaustudieliv\n" +
+    "Snapchat: aauuni";
   // Footer message padding y the y axis
   float footerMessageYPadding = 90;
   // footer message text size;

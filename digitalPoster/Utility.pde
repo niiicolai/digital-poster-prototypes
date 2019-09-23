@@ -15,6 +15,7 @@ static class Utility {
     return (isInsideOnXAxis && isInsideOnYAxis);
   }
   
+  // returns true if mousePosition is on the left side of the screen
   public static boolean clickedLeftSideOfTheScreen(PVector mousePosition, float _width, float _height) {
     return isPointInsideRect(
       mousePosition, 
@@ -23,6 +24,7 @@ static class Utility {
     );
   }
   
+  // returns true if mousePosition is on the right side of the screen
   public static boolean clickedRightSideOfTheScreen(PVector mousePosition, float _width, float _height) {
     return isPointInsideRect(
       mousePosition, 

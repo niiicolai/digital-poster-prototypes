@@ -22,6 +22,15 @@ class InfoPage {
   // The size of the character image
   PVector characterSize = new PVector(70, 190);
   
+  // An array of social media icons
+  PImage[] socialMediaIconImages;
+  // The path to the character image
+  String[] socialMediaIconPaths =  new String[] {
+    "f_logo_RGB-Blue_250.png",
+    "glyph-logo-may_2016.png",
+    "snap-ghost-yellow.png"
+  };
+  
   // The footer rect's stroke color
   color footerRectStrokeColor = color(33, 26, 82);
   // footer height divider
@@ -52,9 +61,9 @@ class InfoPage {
     "Frederik Bajers Vej 7K\nPostboks 159 9100 Aalborg\n" +
     "Telefon: 9940 9940\n" +
     "Mail: aau@aau.dk\n\n" +
-    "(facebook logo): https://www.facebook.com/AalborgUniversitet/\n" +
-    "(ig logo): https://www.instagram.com/aaustudieliv/\n" +
-    "(Snapchat logo): aauuni";
+    "facebook.com/AalborgUniversitet\n" +
+    "instagram.com/aaustudieliv\n" +
+    "Snapchat: aauuni";
   // Footer message padding y the y axis
   float footerMessageYPadding = 90;
   // footer message text size;

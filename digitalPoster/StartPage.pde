@@ -62,32 +62,36 @@ class StartPage {
   // variable match its label
   // Use this function to display page elements
   public void display() {
-    // stop executing display() if it's already is displayed
-    if (isDisplaying) {
-      return;
-    }
     
-    // set background color
-    background(backgroundColor);
-    
-    // set image tint
-    tint(imageTintRgb, imageTintAlpha);
-    
-    // increment 'imageTint' to fade in images
-    // as long its value is less than image tint alpha max
-    if (imageTintAlpha < imageTintAlphaMax) {
-      imageTintAlpha += imageTintAlphaIncrement; 
-    } else {
-      // if the images are faded in, which is the last draw task
-      // we set isDisplay to true
-      isDisplaying = true;
       
-      g.removeCache(backgroundImageGif);
-      g.removeCache(characterImage);
+    // if the page isn't displayed
+    if (!isDisplaying) {
+
+      // set background color
+      background(backgroundColor);
+      
+      // set image tint
+      tint(imageTintRgb, imageTintAlpha);
+      
+      // increment 'imageTint' to fade in images
+      // as long its value is less than image tint alpha max
+      if (imageTintAlpha < imageTintAlphaMax) {
+        imageTintAlpha += imageTintAlphaIncrement; 
+      } else {
+        // if the images are faded in, which is the last draw task
+        // we set isDisplay to true
+        isDisplaying = true;
+        
+        g.removeCache(backgroundImageGif);
+        g.removeCache(characterImage);
+      }
+    
     }
     
     // Draw the background image
-    image(backgroundImageGif, 0, 0, width, height);
+    // This have to execute every frame through draw
+    // to ensure the gif to play
+    image(backgroundImageGif, 0, 0, width, height);          
     
     // Draw the character image
     image(characterImage, characterPosition.x, characterPosition.y, 

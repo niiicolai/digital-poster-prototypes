@@ -1,6 +1,5 @@
 import gifAnimation.*;  
 import processing.sound.*;
-import processing.video.*;
 
 PApplet pApplet = this;
 

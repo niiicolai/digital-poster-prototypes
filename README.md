@@ -1,5 +1,7 @@
 ## Digital poster prototypes
 
+![](readmeCharacter.gif)
+
 - Find report overview at [Trello](https://trello.com/b/kYEZlh3N/rapport)
 - Find issues that needs contribution at our [project list](https://github.com/niiicolai/digital-poster-prototypes/projects)
 

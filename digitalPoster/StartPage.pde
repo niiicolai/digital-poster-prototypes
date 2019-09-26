@@ -14,13 +14,13 @@ class StartPage {
   color backgroundColor = color(33, 26, 82);
   
   // The start page's character
-  PImage characterImage;
+  Gif characterGif;
   // The path to the character image
-  String characterImagePath = "demo-character.png";
+  String characterGifPath = "characterStartPage.gif";
   // The position of the character image
   PVector characterPosition;
   // The size of the character image
-  PVector characterSize = new PVector(70, 190);
+  PVector characterSize = new PVector(350, 320);
   
   // The number of alpha applied to all images
   int imageTintAlpha = 0;  
@@ -36,14 +36,13 @@ class StartPage {
   // after setting processing display windows size() etc.
   public void init() {                                        
     // Load the gif from our assets folder
-    backgroundImageGif = new Gif(pApplet, backgroundImagePath);
-    backgroundImageGif.play();
+    backgroundImageGif = new Gif(pApplet, backgroundImagePath);    
     
     // Load the image from the assets folder
-    characterImage = loadImage(characterImagePath);
+    characterGif = new Gif(pApplet, characterGifPath);
     
     // Set character position based on height and width
-    characterPosition = new PVector(width/2-characterSize.x/2, height/1.58);
+    characterPosition = new PVector(width/2-characterSize.x/2, height/2);
   }
   
   // the global navigate(string) function
@@ -55,6 +54,10 @@ class StartPage {
     
     // set to false so we can display this page another time
     isDisplaying = false;
+    
+    // Set the gifs to start playing
+    backgroundImageGif.play();
+    characterGif.play();
   }
   
   // the global draw() function
@@ -81,9 +84,6 @@ class StartPage {
         // if the images are faded in, which is the last draw task
         // we set isDisplay to true
         isDisplaying = true;
-        
-        g.removeCache(backgroundImageGif);
-        g.removeCache(characterImage);
       }
     
     }
@@ -94,8 +94,14 @@ class StartPage {
     image(backgroundImageGif, 0, 0, width, height);          
     
     // Draw the character image
-    image(characterImage, characterPosition.x, characterPosition.y, 
+    image(characterGif, characterPosition.x, characterPosition.y, 
                           characterSize.x, characterSize.y);
+  }
+  
+  public void onHide() {
+    // stop the gifs from playing
+    backgroundImageGif.stop();
+    characterGif.stop();
   }
   
   // called inside mouseClicked()

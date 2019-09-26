@@ -1,5 +1,6 @@
 import gifAnimation.*;  
 import processing.sound.*;
+import processing.video.*;
 
 PApplet pApplet = this;
 
@@ -61,6 +62,9 @@ void setup() {
   programmingPage.init();
   projectPage.init();
   infoPage.init();
+  
+  // Run beforeDisplay on the first page
+  startPage.beforeDisplay();
 }
 
 // Run forever
@@ -112,6 +116,18 @@ void mousePressed() {
 public void navigate(String nextPage) {  
   // play click sound
   clickSoundFile.play();
+  
+  if (currentPage == startPage.label) {
+    startPage.onHide();
+  } else if (currentPage == avsPage.label) {
+    avsPage.onHide();
+  } else if (currentPage == programmingPage.label) {
+    programmingPage.onHide();
+  } else if (currentPage == projectPage.label) {
+    projectPage.onHide();
+  } else if (currentPage == infoPage.label) {
+    infoPage.onHide();
+  }
   
   // Set current scene to the new page
   currentPage = nextPage;

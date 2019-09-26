@@ -8,19 +8,19 @@ class AvsPage {
   // The page's background image
   PImage bgImage;
   // The path to the background image
-  String backgroundImagePath = "audioVisualSketching.png";
+  String backgroundImagePath = "avsBgg.jpg";
   
   // The page's background color
   color backgroundColor = color(33, 26, 82);
   
   // The start page's character
-  PImage characterImage;
+  Gif characterGif;
   // The path to the character image
-  String characterImagePath = "demo-character.png";
+  String characterGifPath = "characterAVS.gif";
   // The position of the character image
   PVector characterPosition;
   // The size of the character image
-  PVector characterSize = new PVector(70, 190);
+  PVector characterSize = new PVector(260, 300);
   
   // An array of all text messages
   String[] textMessages = new String[] {
@@ -74,14 +74,16 @@ class AvsPage {
   // Use this function to setup variables
   // after setting processing display windows size() etc.
   public void init() {
-    // Load the image from our assets folder
-    bgImage = loadImage(backgroundImagePath);  
+      
     
+    // Load the image from our assets folder
+    bgImage = loadImage(backgroundImagePath);    
+     
     // Load the image from the assets folder
-    characterImage = loadImage(characterImagePath);
+    characterGif = new Gif(pApplet, characterGifPath);
     
     // Set character position based on height and width
-    characterPosition = new PVector(width/2-characterSize.x/2, height/1.58);
+    characterPosition = new PVector(width/2-characterSize.x/4.1, height/1.95);
     
     // Create an instance of a textbox array with same the length as 'textMessages'
     textboxes = new Textbox[textMessages.length];
@@ -147,6 +149,9 @@ class AvsPage {
     
     // set to false so we can display this page another time
     isDisplaying = false;
+    
+    // Set the gif to start playing
+    characterGif.play();
   }
 
   // the global draw() function
@@ -154,11 +159,10 @@ class AvsPage {
   // variable match its label
   // Use this function to display page elements
   public void display() { 
+                                     
     // stop executing display() if it's already is displayed
-    if (isDisplaying) {
-      return;
-    }
-    
+    //if (!isDisplaying) {
+
     // set background color
     background(backgroundColor);
     
@@ -175,8 +179,8 @@ class AvsPage {
     image(bgImage, 0, 0, width, height);
     
     // Draw the character image
-    image(characterImage, characterPosition.x, characterPosition.y, 
-                          characterSize.x, characterSize.y);                              
+    image(characterGif, characterPosition.x, characterPosition.y, 
+                                     characterSize.x, characterSize.y);                            
 
     // Declare a boolean which says all transitions is finished
     boolean sequentialTransitionFinished = true;
@@ -224,14 +228,19 @@ class AvsPage {
       // we set isDisplay to true
       isDisplaying = true;
       
-      g.removeCache(bgImage);
-      g.removeCache(characterImage);
     }
 
     // draw text boxes
     for (int i = 0; i < textboxes.length; i++) {
       textboxes[i].display();
     }
+    
+    //}
+  }
+  
+  public void onHide() {
+    // stop the gif from playing
+    characterGif.stop();
   }
 
   // called inside mouseClicked()

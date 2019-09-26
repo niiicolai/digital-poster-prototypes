@@ -14,9 +14,9 @@ class ProgrammingPage {
   color backgroundColor = color(33, 26, 82);
   
   // The start page's character
-  PImage characterImage;
+  Gif characterGif;
   // The path to the character image
-  String characterImagePath = "demo-character.png";
+  String characterGifPath = "characterStartPage.gif";
   // The position of the character image
   PVector characterPosition;
   // The size of the character image
@@ -80,7 +80,7 @@ class ProgrammingPage {
     bgImage = loadImage(backgroundImagePath);
     
     // Load the image from the assets folder
-    characterImage = loadImage(characterImagePath);
+    characterGif = new Gif(pApplet, characterGifPath);
     
     // Set character position based on height and width
     characterPosition = new PVector(width/2-characterSize.x/2, height/1.58);
@@ -149,6 +149,9 @@ class ProgrammingPage {
     
     // set to false so we can display this page another time
     isDisplaying = false;
+    
+    // Set the gif to start playing
+    characterGif.play();
   }
 
   // the global draw() function
@@ -157,9 +160,9 @@ class ProgrammingPage {
   // Use this function to display page elements
   public void display() {
     // stop executing display() if it's already is displayed
-    if (isDisplaying) {
-      return;
-    }
+    //if (isDisplaying) {
+    //  return;
+    //}
     
     // set background color
     background(backgroundColor);
@@ -177,7 +180,7 @@ class ProgrammingPage {
     image(bgImage, 0, 0, width, height);
     
     // Draw the character image
-    image(characterImage, characterPosition.x, characterPosition.y, 
+    image(characterGif, characterPosition.x, characterPosition.y, 
                           characterSize.x, characterSize.y);
 
     // Declare a boolean which says all transitions is finished
@@ -224,16 +227,18 @@ class ProgrammingPage {
     } else {
       // if the textboxes are faded in, which is the last draw task
       // we set isDisplay to true
-      isDisplaying = true;
-      
-      g.removeCache(bgImage);
-      g.removeCache(characterImage);
+      //isDisplaying = true;
     }
 
     // draw text boxes
     for (int i = 0; i < textboxes.length; i++) {
       textboxes[i].display();
     }
+  }
+  
+  public void onHide() {
+    // stop the gif from playing
+    characterGif.stop();
   }
 
   // called inside mouseClicked()

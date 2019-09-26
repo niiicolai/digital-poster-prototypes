@@ -45,9 +45,6 @@ class Textbox {
     // Set text color
     fill(textColor);
     
-    // Set the text size
-    //textSize(textSize);
-    
     // Set text alignment
     textAlign(textAlignment);
     

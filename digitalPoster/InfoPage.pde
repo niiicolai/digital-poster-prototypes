@@ -23,13 +23,13 @@ class InfoPage {
   color backgroundColor = color(33, 26, 82);
   
   // The start page's character
-  PImage characterImage;
+  Gif characterGif;
   // The path to the character image
-  String characterImagePath = "demo-character.png";
+  String characterGifPath = "characterInfo.gif";
   // The position of the character image
   PVector characterPosition = new PVector(0, 30);
   // The size of the character image
-  PVector characterSize = new PVector(70, 190);
+  PVector characterSize = new PVector(350, 320);
   
   // The footer rect's stroke color
   color footerRectStrokeColor = color(33, 26, 82);
@@ -102,8 +102,8 @@ class InfoPage {
     // Load the image from our data folder
     bgImage = loadImage(backgroundImagePath);
     
-    // Load the image from the data folder
-    characterImage = loadImage(characterImagePath);
+    // Load the image from the assets folder
+    characterGif = new Gif(pApplet, characterGifPath);
     
     // Load the logo from the data folder
     aauLogoImage = loadImage(aauLogoImagePath);
@@ -113,7 +113,7 @@ class InfoPage {
                                   height-aauLogoPosition.y-auuLogoSize.y);
     
     // Set character position based on height and width
-    characterPosition = new PVector(width/2-characterSize.x/2, height/2.7);
+    characterPosition = new PVector(width/2-characterSize.x/2, height/3.2);
     
     // Find the positions for the sequential line
     PVector[] seqLinePositions = new PVector[]{
@@ -149,6 +149,9 @@ class InfoPage {
     
     // set to false so we can display this page another time
     isDisplaying = false;
+    
+    // Set the gif to start playing
+    characterGif.play();
   }
   
   // the global draw() function
@@ -157,9 +160,9 @@ class InfoPage {
   // Use this function to display page elements
   public void display() {
     // stop executing display() if it's already is displayed
-    if (isDisplaying) {
-      return;
-    }
+    //if (isDisplaying) {
+    //  return;
+    //}
     
     // set background color
     background(backgroundColor);
@@ -177,7 +180,7 @@ class InfoPage {
     image(bgImage, 0, 0, width, height);
     
     // Draw the character image
-    image(characterImage, characterPosition.x, characterPosition.y, 
+    image(characterGif, characterPosition.x, characterPosition.y, 
                           characterSize.x, characterSize.y);
 
     // Declare a boolean which says all transitions is finished
@@ -237,9 +240,6 @@ class InfoPage {
       // if the footer rect are faded in, which is the last draw task
       // we set isDisplay to true
       isDisplaying = true;
-      
-      g.removeCache(bgImage);
-      g.removeCache(characterImage);
     }
     // if the footer rect is done fading
     // the code will continue to from this point
@@ -266,6 +266,11 @@ class InfoPage {
     // Draw footer message text
     text(footerMessage, width/2, height/footerRectHeightDivider+footerMessageYPadding);
   
+  }
+  
+  public void onHide() {
+    // stop the gif from playing
+    characterGif.stop();
   }
   
   // called inside mouseClicked()

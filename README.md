@@ -6,7 +6,7 @@
 ## Dependencies
 
 - The Processing Foundation's sound library
-- [gifAnimation processing library](https://github.com/extrapixel/gif-animation)
+- [gifAnimation Processing library](https://github.com/extrapixel/gif-animation)
 
 ## Get started
 

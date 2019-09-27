@@ -16,7 +16,7 @@ class ProgrammingPage {
   // The start page's character
   Gif characterGif;
   // The path to the character image
-  String characterGifPath = "characterStartPage.gif";
+  String characterGifPath = "characterProgramming.gif";
   // The position of the character image
   PVector characterPosition;
   // The size of the character image

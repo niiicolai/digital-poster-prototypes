@@ -16,11 +16,11 @@ class ProjectPage {
   // The start page's character
   Gif characterGif;
   // The path to the character image
-  String characterGifPath = "characterStartPage.gif";
+  String characterGifPath = "characterProject.gif";
   // The position of the character image
   PVector characterPosition;
   // The size of the character image
-  PVector characterSize = new PVector(70, 190);
+  PVector characterSize = new PVector(300, 280);
   
   // An array of all text messages
   String[] textMessages = new String[] {

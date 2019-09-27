@@ -20,7 +20,7 @@ class ProgrammingPage {
   // The position of the character image
   PVector characterPosition;
   // The size of the character image
-  PVector characterSize = new PVector(70, 190);    
+  PVector characterSize = new PVector(300, 280);    
   
   // An array of all text messages
   String[] textMessages = new String[] {
@@ -83,7 +83,7 @@ class ProgrammingPage {
     characterGif = new Gif(pApplet, characterGifPath);
     
     // Set character position based on height and width
-    characterPosition = new PVector(width/2-characterSize.x/2, height/1.58);
+    characterPosition = new PVector(width/2.5, height/1.89);
     
     // Create an instance of a textbox array with same the length as 'textMessages'
     textboxes = new Textbox[textMessages.length];

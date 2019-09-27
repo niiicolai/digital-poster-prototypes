@@ -83,7 +83,7 @@ class ProjectPage {
     characterGif = new Gif(pApplet, characterGifPath);
     
     // Set character position based on height and width
-    characterPosition = new PVector(width/2-characterSize.x/2, height/1.58);
+    characterPosition = new PVector(width/2-characterSize.x/4.8, height/1.88);
     
      // Create an instance of a textbox array with same the length as 'textMessages'
     textboxes = new Textbox[textMessages.length];
